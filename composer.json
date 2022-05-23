@@ -1,0 +1,26 @@
+{
+  "name": "braunstetter/media-bundle",
+  "description": "Everything you need to upload and manage Media with symfony.",
+  "type": "symfony-bundle",
+  "keywords": ["media", "symfony-ux", "symfony"],
+  "license": "MIT",
+  "require": {
+    "php": "^8.0",
+    "symfony/framework-bundle": "^4.4|^5.0|^6.0",
+    "symfony/string": "^6.0",
+    "webmozart/assert": "^1.1",
+    "braunstetter/helper" : "^0",
+    "symfony/form": "^6.0",
+    "doctrine/orm": "^2.11"
+  },
+  "autoload": {
+    "psr-4": {
+      "Braunstetter\\MediaBundle\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Braunstetter\\MediaBundle\\Tests\\": "tests"
+    }
+  }
+}
