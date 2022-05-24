@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
+return static function(ContainerConfigurator $containerConfigurator): void {
 
     $services = $containerConfigurator->services();
 
@@ -20,7 +20,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autoconfigure();
 
     $services->load('Braunstetter\MediaBundle\\', __DIR__ . '/../src')
-        ->exclude([__DIR__ . '/../src/MediaBundle.php',]);
+        ->exclude([__DIR__ . '/../src/MediaBundle.php']);
 
     $services->set(FilesystemManager::class)
         ->arg('$logger', service(LoggerInterface::class))
