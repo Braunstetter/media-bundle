@@ -6,7 +6,7 @@ use Braunstetter\MediaBundle\DependencyInjection\MediaBundleExtension;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class MediaBundleBundle extends Bundle
+class MediaBundle extends Bundle
 {
     public function getContainerExtension(): ?ExtensionInterface
     {

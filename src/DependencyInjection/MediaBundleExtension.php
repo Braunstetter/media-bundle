@@ -28,6 +28,9 @@ class MediaBundleExtension extends Extension implements PrependExtensionInterfac
     public function prepend(ContainerBuilder $container)
     {
         $yamlFileLoader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
-        $yamlFileLoader->load('form_theme.php');
+
+        if ($container->hasExtension('twig')) {
+            $yamlFileLoader->load('form_theme.php');
+        }
     }
 }

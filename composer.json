@@ -11,7 +11,13 @@
     "webmozart/assert": "^1.1",
     "braunstetter/helper" : "^0",
     "symfony/form": "^6.0",
-    "doctrine/orm": "^2.11"
+    "doctrine/orm": "^2.11",
+    "symfony/twig-bundle": "^4.4|^5.0|^6.0"
+  },
+  "require-dev": {
+    "symfony/test-pack": "^1.0",
+    "matthiasnoback/symfony-dependency-injection-test": "^4.2",
+    "nyholm/symfony-bundle-test": "1.8.1"
   },
   "autoload": {
     "psr-4": {

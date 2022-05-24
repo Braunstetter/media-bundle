@@ -20,7 +20,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autoconfigure();
 
     $services->load('Braunstetter\MediaBundle\\', __DIR__ . '/../src')
-        ->exclude([__DIR__ . '/../src/MediaBundleBundle.php',]);
+        ->exclude([__DIR__ . '/../src/MediaBundle.php',]);
 
     $services->set(FilesystemManager::class)
         ->arg('$logger', service(LoggerInterface::class))
