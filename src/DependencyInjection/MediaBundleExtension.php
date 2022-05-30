@@ -19,7 +19,6 @@ class MediaBundleExtension extends Extension implements PrependExtensionInterfac
     {
         $phpFileLoader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
         $phpFileLoader->load('services.php');
-
     }
 
     /**

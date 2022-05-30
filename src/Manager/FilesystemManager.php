@@ -4,11 +4,9 @@ namespace Braunstetter\MediaBundle\Manager;
 
 use Braunstetter\MediaBundle\Contracts\FileInterface;
 use Braunstetter\MediaBundle\Contracts\FileManagerInterface;
-use Exception;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
@@ -36,10 +34,10 @@ class FilesystemManager implements FileManagerInterface
         $this->parameterBag = $parameterBag;
     }
 
-    public function upload(FileInterface $fileEntity): void
+    public function upload(FileInterface $fileEntity, bool $uniqFileName = true): bool
     {
         if (!$fileEntity->hasFile()) {
-            return;
+            return false;
         }
 
         $file = $fileEntity->getFile();
@@ -48,35 +46,19 @@ class FilesystemManager implements FileManagerInterface
         Assert::isInstanceOf($file, File::class);
 
         if (null !== $fileEntity->getFullPath() && $this->has($fileEntity->getFullPath())) {
-            $this->remove($fileEntity->getFullPath());
+            $this->remove($this->getDirectory() . $fileEntity->getFullPath());
         }
 
         do {
-            $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-            $safeFilename = $this->slugger->slug($originalFilename);
-            $newFilename = $safeFilename . '-' . uniqid() . '.' . $file->guessExtension();
-
-            $path = $this->getFullDirectory() . $newFilename;
-
+            $newFilename = $this->createFilename($file, $uniqFileName);
+            $path = $this->getFullDirectory() . '/' . $newFilename;
         } while ($this->filesystem->exists($path));
 
         $fileEntity->setFolder($this->getFolder());
         $fileEntity->setFileName($newFilename);
-
-        try {
-            $file->move(
-                $this->getFullDirectory(),
-                $newFilename
-            );
-        } catch (FileException) {
-            $this->logger->alert(sprintf('Uploaded file "%s" could not be moved to the new location "%s"',
-                    $newFilename,
-                    $this->getFullDirectory() . '/' . $newFilename)
-            );
-        }
-
+        $file->move($this->getFullDirectory(), $newFilename);
         $fileEntity->setFile(null);
-
+        return true;
     }
 
     /**
@@ -104,25 +86,25 @@ class FilesystemManager implements FileManagerInterface
 
     public function getFullDirectory(): string
     {
-        return $this->getDirectory() . $this->getFolder() . '/';
+        return $this->getDirectory() . $this->getFolder();
     }
 
     private function has(string $path): bool
     {
-        return $this->filesystem->exists($path);
+        return $this->filesystem->exists(realpath($this->getDirectory()) . $path);
     }
 
     public function remove(string $path): bool
     {
-        if ($this->filesystem->exists($path)) {
-            try {
-                $this->filesystem->remove($path);
-            } catch (Exception) {
-                return false;
-            }
-        }
+        $this->filesystem->exists($path) && $this->filesystem->remove($path);
 
         return true;
     }
 
+    private function createFilename(UploadedFile $file, bool $uniqFileName = true): string
+    {
+        $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+
+        return $this->slugger->slug($originalFilename) . ($uniqFileName ? '-' . uniqid() : '') . '.' . $file->guessExtension();
+    }
 }

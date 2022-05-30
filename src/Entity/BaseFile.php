@@ -4,9 +4,6 @@ namespace Braunstetter\MediaBundle\Entity;
 
 use Braunstetter\MediaBundle\Contracts\FileInterface;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\DiscriminatorColumn;
-use Doctrine\ORM\Mapping\Entity;
-use Doctrine\ORM\Mapping\InheritanceType;
 use Doctrine\ORM\Mapping\MappedSuperclass;
 use ReflectionClass;
 use Serializable;
@@ -91,8 +88,8 @@ abstract class BaseFile implements FileInterface, Serializable
 
     public function getFullPath(): string|null
     {
-        return isset($this->folder) && $this->getFilename() ?
-            $this->getFolder() . '/' . $this->getFilename()
+        return isset($this->folder) && $this->getFilename()
+            ? $this->getFolder() . '/' . $this->getFilename()
             : null;
     }
 
@@ -129,7 +126,7 @@ abstract class BaseFile implements FileInterface, Serializable
 
     public function hasFile(): bool
     {
-        return isset($this->file) && null !== $this->file;
+        return isset($this->file);
     }
 
     /** @see \Serializable::serialize() */
@@ -146,7 +143,7 @@ abstract class BaseFile implements FileInterface, Serializable
     /** @see \Serializable::unserialize() */
     public function unserialize($data)
     {
-        unserialize($data);
+        return unserialize($data);
     }
 
     public function __toString(): string
