@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1653930784">
-  <project timestamp="1653930784">
+<coverage generated="1654536544">
+  <project timestamp="1654536544">
     <file name="/Users/michaelbrauner/Bundles/Symfony/MediaBundle/Bundle/src/Contracts/FileInterface.php">
       <metrics loc="22" ncloc="22" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
@@ -22,54 +22,54 @@
     </file>
     <file name="/Users/michaelbrauner/Bundles/Symfony/MediaBundle/Bundle/src/Entity/BaseFile.php">
       <class name="Braunstetter\MediaBundle\Entity\BaseFile" namespace="global">
-        <metrics complexity="21" methods="17" coveredmethods="17" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="28" elements="45" coveredelements="45"/>
+        <metrics complexity="20" methods="17" coveredmethods="17" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="28" elements="45" coveredelements="45"/>
       </class>
-      <line num="45" type="method" name="getId" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="35" type="method" name="getId" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="37" type="stmt" count="3"/>
+      <line num="40" type="method" name="getFilename" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="42" type="stmt" count="3"/>
+      <line num="45" type="method" name="setFilename" visibility="public" complexity="1" crap="1" count="3"/>
       <line num="47" type="stmt" count="3"/>
-      <line num="50" type="method" name="getFilename" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="52" type="stmt" count="3"/>
-      <line num="55" type="method" name="setFilename" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="57" type="stmt" count="3"/>
-      <line num="59" type="stmt" count="3"/>
-      <line num="62" type="method" name="getOriginalFilename" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="64" type="stmt" count="3"/>
-      <line num="67" type="method" name="setOriginalFilename" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="69" type="stmt" count="1"/>
+      <line num="49" type="stmt" count="3"/>
+      <line num="52" type="method" name="getOriginalFilename" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="54" type="stmt" count="3"/>
+      <line num="57" type="method" name="setOriginalFilename" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="59" type="stmt" count="1"/>
+      <line num="61" type="stmt" count="1"/>
+      <line num="64" type="method" name="getMimeType" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="66" type="stmt" count="3"/>
+      <line num="69" type="method" name="setMimeType" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="71" type="stmt" count="1"/>
-      <line num="74" type="method" name="getMimeType" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="76" type="stmt" count="3"/>
-      <line num="79" type="method" name="setMimeType" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="81" type="stmt" count="1"/>
-      <line num="83" type="stmt" count="1"/>
-      <line num="92" type="method" name="getFullPath" visibility="public" complexity="3" crap="3" count="5"/>
-      <line num="94" type="stmt" count="5"/>
-      <line num="95" type="stmt" count="3"/>
-      <line num="96" type="stmt" count="5"/>
-      <line num="99" type="method" name="getType" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="101" type="stmt" count="1"/>
-      <line num="107" type="method" name="getFolder" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="109" type="stmt" count="3"/>
-      <line num="115" type="method" name="setFolder" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="117" type="stmt" count="3"/>
-      <line num="120" type="method" name="getFile" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="73" type="stmt" count="1"/>
+      <line num="82" type="method" name="getFullPath" visibility="public" complexity="3" crap="3" count="5"/>
+      <line num="84" type="stmt" count="5"/>
+      <line num="85" type="stmt" count="3"/>
+      <line num="86" type="stmt" count="5"/>
+      <line num="89" type="method" name="getType" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="91" type="stmt" count="1"/>
+      <line num="97" type="method" name="getFolder" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="99" type="stmt" count="3"/>
+      <line num="105" type="method" name="setFolder" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="107" type="stmt" count="3"/>
+      <line num="110" type="method" name="getFile" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="112" type="stmt" count="3"/>
+      <line num="115" type="method" name="setFile" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="117" type="stmt" count="2"/>
+      <line num="120" type="method" name="hasFile" visibility="public" complexity="1" crap="1" count="3"/>
       <line num="122" type="stmt" count="3"/>
-      <line num="125" type="method" name="setFile" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="127" type="stmt" count="2"/>
-      <line num="130" type="method" name="hasFile" visibility="public" complexity="2" crap="2" count="3"/>
-      <line num="132" type="stmt" count="3"/>
-      <line num="136" type="method" name="serialize" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="138" type="stmt" count="2"/>
-      <line num="139" type="stmt" count="2"/>
-      <line num="140" type="stmt" count="2"/>
-      <line num="141" type="stmt" count="2"/>
-      <line num="142" type="stmt" count="2"/>
-      <line num="147" type="method" name="unserialize" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="149" type="stmt" count="1"/>
-      <line num="152" type="method" name="__toString" visibility="public" complexity="2" crap="2" count="1"/>
-      <line num="154" type="stmt" count="1"/>
-      <line num="155" type="stmt" count="1"/>
-      <line num="158" type="stmt" count="1"/>
-      <metrics loc="161" ncloc="133" classes="1" methods="17" coveredmethods="17" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="28" elements="45" coveredelements="45"/>
+      <line num="126" type="method" name="serialize" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="128" type="stmt" count="2"/>
+      <line num="129" type="stmt" count="2"/>
+      <line num="130" type="stmt" count="2"/>
+      <line num="131" type="stmt" count="2"/>
+      <line num="132" type="stmt" count="2"/>
+      <line num="137" type="method" name="unserialize" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="139" type="stmt" count="1"/>
+      <line num="142" type="method" name="__toString" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="144" type="stmt" count="1"/>
+      <line num="145" type="stmt" count="1"/>
+      <line num="148" type="stmt" count="1"/>
+      <metrics loc="151" ncloc="140" classes="1" methods="17" coveredmethods="17" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="28" elements="45" coveredelements="45"/>
     </file>
     <file name="/Users/michaelbrauner/Bundles/Symfony/MediaBundle/Bundle/src/Entity/EventListeners/FileDeleteListener.php">
       <class name="Braunstetter\MediaBundle\Entity\EventListeners\FileDeleteListener" namespace="global">
@@ -91,67 +91,67 @@
     </file>
     <file name="/Users/michaelbrauner/Bundles/Symfony/MediaBundle/Bundle/src/Form/Type/ImageCollectionItemType.php">
       <class name="Braunstetter\MediaBundle\Form\Type\ImageCollectionItemType" namespace="global">
-        <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="6" coveredelements="0"/>
+        <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="6" coveredelements="6"/>
       </class>
-      <line num="11" type="method" name="buildForm" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="14" type="stmt" count="0"/>
-      <line num="19" type="method" name="getParent" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="21" type="stmt" count="0"/>
-      <line num="24" type="method" name="getBlockPrefix" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="26" type="stmt" count="0"/>
-      <metrics loc="30" ncloc="30" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="6" coveredelements="0"/>
+      <line num="11" type="method" name="buildForm" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="14" type="stmt" count="1"/>
+      <line num="19" type="method" name="getParent" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="21" type="stmt" count="1"/>
+      <line num="24" type="method" name="getBlockPrefix" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="26" type="stmt" count="1"/>
+      <metrics loc="30" ncloc="30" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="6" coveredelements="6"/>
     </file>
     <file name="/Users/michaelbrauner/Bundles/Symfony/MediaBundle/Bundle/src/Form/Type/ImageCollectionType.php">
       <class name="Braunstetter\MediaBundle\Form\Type\ImageCollectionType" namespace="global">
-        <metrics complexity="5" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="0" elements="20" coveredelements="0"/>
+        <metrics complexity="5" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="20" coveredelements="20"/>
       </class>
-      <line num="17" type="method" name="buildForm" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="19" type="stmt" count="0"/>
-      <line num="20" type="stmt" count="0"/>
-      <line num="21" type="stmt" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="29" type="method" name="finishView" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="40" type="method" name="configureOptions" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="42" type="stmt" count="0"/>
-      <line num="43" type="stmt" count="0"/>
-      <line num="44" type="stmt" count="0"/>
-      <line num="45" type="stmt" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="47" type="stmt" count="0"/>
-      <line num="51" type="method" name="getParent" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="53" type="stmt" count="0"/>
-      <metrics loc="56" ncloc="56" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="0" elements="20" coveredelements="0"/>
+      <line num="17" type="method" name="buildForm" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="19" type="stmt" count="1"/>
+      <line num="20" type="stmt" count="1"/>
+      <line num="21" type="stmt" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="24" type="stmt" count="1"/>
+      <line num="29" type="method" name="finishView" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="31" type="stmt" count="1"/>
+      <line num="32" type="stmt" count="1"/>
+      <line num="34" type="stmt" count="1"/>
+      <line num="36" type="stmt" count="1"/>
+      <line num="40" type="method" name="configureOptions" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="42" type="stmt" count="1"/>
+      <line num="43" type="stmt" count="1"/>
+      <line num="44" type="stmt" count="1"/>
+      <line num="45" type="stmt" count="1"/>
+      <line num="46" type="stmt" count="1"/>
+      <line num="47" type="stmt" count="1"/>
+      <line num="51" type="method" name="getParent" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="53" type="stmt" count="1"/>
+      <metrics loc="56" ncloc="56" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="20" coveredelements="20"/>
     </file>
     <file name="/Users/michaelbrauner/Bundles/Symfony/MediaBundle/Bundle/src/Form/Type/ImageType.php">
       <class name="Braunstetter\MediaBundle\Form\Type\ImageType" namespace="global">
-        <metrics complexity="4" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="0" elements="20" coveredelements="0"/>
+        <metrics complexity="4" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="20" coveredelements="20"/>
       </class>
-      <line num="15" type="method" name="configureOptions" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="17" type="stmt" count="0"/>
-      <line num="18" type="stmt" count="0"/>
-      <line num="21" type="stmt" count="0"/>
-      <line num="22" type="stmt" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="26" type="stmt" count="0"/>
-      <line num="27" type="stmt" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="32" type="method" name="finishView" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="40" type="stmt" count="0"/>
-      <line num="42" type="stmt" count="0"/>
-      <line num="43" type="stmt" count="0"/>
-      <line num="50" type="method" name="getBlockPrefix" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="52" type="stmt" count="0"/>
-      <metrics loc="54" ncloc="54" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="0" elements="20" coveredelements="0"/>
+      <line num="15" type="method" name="configureOptions" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="17" type="stmt" count="1"/>
+      <line num="18" type="stmt" count="1"/>
+      <line num="21" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="24" type="stmt" count="1"/>
+      <line num="26" type="stmt" count="1"/>
+      <line num="27" type="stmt" count="1"/>
+      <line num="28" type="stmt" count="1"/>
+      <line num="29" type="stmt" count="1"/>
+      <line num="32" type="method" name="finishView" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="34" type="stmt" count="1"/>
+      <line num="36" type="stmt" count="1"/>
+      <line num="37" type="stmt" count="1"/>
+      <line num="40" type="stmt" count="1"/>
+      <line num="42" type="stmt" count="1"/>
+      <line num="43" type="stmt" count="1"/>
+      <line num="50" type="method" name="getBlockPrefix" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="52" type="stmt" count="1"/>
+      <metrics loc="54" ncloc="54" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="20" coveredelements="20"/>
     </file>
     <file name="/Users/michaelbrauner/Bundles/Symfony/MediaBundle/Bundle/src/Manager/FilesystemManager.php">
       <class name="Braunstetter\MediaBundle\Manager\FilesystemManager" namespace="global">
@@ -180,21 +180,21 @@
       <line num="68" type="method" name="setFolder" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="70" type="stmt" count="2"/>
       <line num="71" type="stmt" count="2"/>
-      <line num="77" type="method" name="getFolder" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="79" type="stmt" count="2"/>
-      <line num="82" type="method" name="getDirectory" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="84" type="stmt" count="2"/>
-      <line num="87" type="method" name="getFullDirectory" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="89" type="stmt" count="2"/>
-      <line num="92" type="method" name="has" visibility="private" complexity="1" crap="1" count="1"/>
-      <line num="94" type="stmt" count="1"/>
-      <line num="97" type="method" name="remove" visibility="public" complexity="2" crap="2" count="1"/>
-      <line num="99" type="stmt" count="1"/>
-      <line num="101" type="stmt" count="1"/>
-      <line num="104" type="method" name="createFilename" visibility="private" complexity="2" crap="2" count="2"/>
-      <line num="106" type="stmt" count="2"/>
-      <line num="108" type="stmt" count="2"/>
-      <metrics loc="110" ncloc="102" classes="1" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="28" elements="37" coveredelements="37"/>
+      <line num="74" type="method" name="getFolder" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="76" type="stmt" count="2"/>
+      <line num="79" type="method" name="getDirectory" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="81" type="stmt" count="2"/>
+      <line num="84" type="method" name="getFullDirectory" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="86" type="stmt" count="2"/>
+      <line num="89" type="method" name="has" visibility="private" complexity="1" crap="1" count="1"/>
+      <line num="91" type="stmt" count="1"/>
+      <line num="94" type="method" name="remove" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="96" type="stmt" count="1"/>
+      <line num="98" type="stmt" count="1"/>
+      <line num="101" type="method" name="createFilename" visibility="private" complexity="2" crap="2" count="2"/>
+      <line num="103" type="stmt" count="2"/>
+      <line num="105" type="stmt" count="2"/>
+      <metrics loc="107" ncloc="102" classes="1" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="28" elements="37" coveredelements="37"/>
     </file>
     <file name="/Users/michaelbrauner/Bundles/Symfony/MediaBundle/Bundle/src/MediaBundle.php">
       <class name="Braunstetter\MediaBundle\MediaBundle" namespace="global">
@@ -204,6 +204,6 @@
       <line num="13" type="stmt" count="1"/>
       <metrics loc="15" ncloc="15" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
-    <metrics files="10" loc="539" ncloc="492" classes="8" methods="43" coveredmethods="29" conditionals="0" coveredconditionals="0" statements="106" coveredstatements="62" elements="149" coveredelements="91"/>
+    <metrics files="10" loc="526" ncloc="499" classes="8" methods="43" coveredmethods="39" conditionals="0" coveredconditionals="0" statements="106" coveredstatements="98" elements="149" coveredelements="137"/>
   </project>
 </coverage>

@@ -2,8 +2,8 @@
 
 namespace Braunstetter\MediaBundle\Tests\Unit\Manager;
 
+use App\Entity\Media\Image;
 use Braunstetter\MediaBundle\Manager\FilesystemManager;
-use Braunstetter\MediaBundle\Tests\Fixtures\Entity\Image;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
@@ -41,7 +41,7 @@ class FileSystemManagerTest extends TestCase
 
     public function test_upload_does_actually_upload_images()
     {
-        $fileEntity = $this->createImageEntity('person.png');
+        $fileEntity = $this->createImageEntity('person.jpg');
 
         $this->fileManager->setFolder('/images');
         $this->fileManager->upload($fileEntity);
@@ -56,12 +56,12 @@ class FileSystemManagerTest extends TestCase
 
     public function test_file_gets_removed_if_exists_already()
     {
-        $entity = $this->createImageEntity('person.png');
+        $entity = $this->createImageEntity('person.jpg');
         $this->fileManager->setFolder('/images');
         $this->fileManager->upload($entity, false);
         $this->assertTrue($this->fileSystem->exists($this->getPublicDir() . $entity->getFullPath()));
 
-        $entity->setFile($this->createImage('person.png'));
+        $entity->setFile($this->createImage('person.jpg'));
         $this->fileManager->upload($entity, false);
         $this->assertTrue($this->fileSystem->exists($this->getPublicDir() . $entity->getFullPath()));
     }
@@ -78,7 +78,7 @@ class FileSystemManagerTest extends TestCase
 
     private function createImage(string $name): UploadedFile
     {
-        $filePath = $this->getProjectDir() . "Fixtures/Files/Image/" . $name;
+        $filePath = $this->getProjectDir() . "../app/assets/images/" . $name;
         $fileTempPath = $this->getProjectDir() . "public/temp/" . $name;
         $this->fileSystem->copy($filePath, $fileTempPath);
         $mimeType = (new MimeTypes())->guessMimeType($filePath);

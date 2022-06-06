@@ -1,8 +1,8 @@
 <?php
 
-namespace Braunstetter\MediaBundle\Tests\Unit;
+namespace Braunstetter\MediaBundle\Tests\tests\Unit;
 
-use Braunstetter\MediaBundle\Tests\Fixtures\Entity\Image;
+use App\Entity\Media\Image;
 use PHPUnit\Framework\TestCase;
 
 class BaseFileTest extends TestCase

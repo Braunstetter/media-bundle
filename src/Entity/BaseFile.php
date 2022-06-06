@@ -4,37 +4,30 @@ namespace Braunstetter\MediaBundle\Entity;
 
 use Braunstetter\MediaBundle\Contracts\FileInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\GeneratedValue;
+use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\MappedSuperclass;
 use ReflectionClass;
 use Serializable;
 use SplFileInfo;
 
-/**
- * @MappedSuperclass
- */
+#[MappedSuperclass]
 abstract class BaseFile implements FileInterface, Serializable
 {
 
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[Id]
+    #[Column(type: 'integer')]
+    #[GeneratedValue(strategy: 'AUTO')]
     protected ?int $id;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[Column(type: 'string', length: 255, nullable: true)]
     protected ?string $filename;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[Column(type: 'string', length: 255, nullable: true)]
     protected ?string $originalFilename;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[Column(type: 'string', length: 255, nullable: true)]
     protected ?string $mimeType;
 
     protected ?SplFileInfo $file;

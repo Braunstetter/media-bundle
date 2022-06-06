@@ -1,6 +1,6 @@
 <?php
 
-namespace Braunstetter\MediaBundle\Tests;
+namespace Braunstetter\MediaBundle\Tests\tests;
 
 use Braunstetter\MediaBundle\DependencyInjection\MediaBundleExtension;
 use Braunstetter\MediaBundle\Entity\EventListeners\FileDeleteListener;

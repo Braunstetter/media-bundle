@@ -71,9 +71,6 @@ class FilesystemManager implements FileManagerInterface
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getFolder(): string
     {
         return $this->folder;

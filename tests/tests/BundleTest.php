@@ -1,10 +1,10 @@
 <?php
 
-namespace Braunstetter\MediaBundle\Tests;
+namespace Braunstetter\MediaBundle\Tests\tests;
 
-use Nyholm\BundleTest\AppKernel;
 use Braunstetter\MediaBundle\DependencyInjection\MediaBundleExtension;
 use Braunstetter\MediaBundle\MediaBundle;
+use Nyholm\BundleTest\AppKernel;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\HttpKernel\KernelInterface;

@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 return static function(ContainerConfigurator $containerConfigurator): void {
 
     $containerConfigurator->extension('twig', [
-        'form_themes' => ['@MediaBundle/form/image_theme.html.twig'],
+        'form_themes' => ['@Media/form/image_theme.html.twig'],
     ]);
 
 };

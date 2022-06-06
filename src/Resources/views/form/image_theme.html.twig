@@ -9,7 +9,7 @@
     {% if allow_add %}
         <div class="actions">
             <button data-form-collection-target="addButton" data-action="form-collection#addItem">
-                {{ source('images/svg/icon-plus.svg') }}
+                {{ source('@Media/images/svg/icon-plus.svg') }}
             </button>
         </div>
     {% endif %}
@@ -54,12 +54,12 @@
 
 {% block upload_label %}
     <label for="{{ form.file.vars.id }}" class="btn space-x-1">
-        {{ source('images/svg/icon-cloud-upload.svg') }}
+        {{ source('@Media/images/svg/icon-cloud-upload.svg') }}
         <span>{{ 'ui.choose_file'|trans }}</span>
     </label>
 {% endblock %}
 
 {% block trash_link %}
     <a href="{{ delete_path ?? '#' }}"
-       {% if delete_path is not defined %}data-action="form-collection#removeItem"{% endif %}>{{ source('@ControlPanel/images/icon-trash.svg') }}</a>
+       {% if delete_path is not defined %}data-action="form-collection#removeItem"{% endif %}>{{ source('@Media/images/svg/icon-trash.svg') }}</a>
 {% endblock %}
