@@ -6,10 +6,14 @@ namespace App\Controller;
 use App\Entity\Page;
 use Braunstetter\MediaBundle\Form\Type\ImageCollectionItemType;
 use Braunstetter\MediaBundle\Form\Type\ImageCollectionType;
-use Doctrine\ORM\EntityManagerInterface;
+use Braunstetter\MediaBundle\Tests\Functional\AbstractMediaBundleTestCase;
+use Braunstetter\MediaBundle\Tests\TestHelper;
+use Braunstetter\MediaBundle\Uploader\FilesystemUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
@@ -25,10 +29,42 @@ class TestController extends AbstractController
      * @throws RuntimeError
      * @throws LoaderError
      */
-    public function test(EntityManagerInterface $entityManager, FormFactoryInterface $formFactory, Environment $environment, Request $request): Response
+    public function test(FormFactoryInterface $formFactory, Environment $environment, Request $request, FilesystemUploader $filesystemManager): Response
     {
-        $form = $formFactory->createBuilder(FormType::class, new Page());
-        $form ->add('image', ImageCollectionType::class, [
+        $form = $this->getForm($formFactory);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->uploadImage($filesystemManager, $form);
+        }
+
+        return new Response(
+            $environment->render('form/page_index.html.twig', ['form' => $form->createView()])
+        );
+    }
+
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
+    public function testWithExistingImage(FormFactoryInterface $formFactory, Environment $environment, Request $request, FilesystemUploader $filesystemManager): Response
+    {
+        $page = new Page();
+        $page->addImage(TestHelper::createImageEntity('person.jpg'));
+        $form = $this->getForm($formFactory, $page);
+        $this->uploadImage($filesystemManager, $form);
+
+        return new Response(
+            $environment->render('form/page_index.html.twig', ['form' => $form->createView()])
+        );
+    }
+
+    private function getForm(FormFactoryInterface $formFactory, Page|null $entity = null): FormInterface
+    {
+        $form = $formFactory->createBuilder(FormType::class, $entity ?? new Page());
+
+        $form->add('image', ImageCollectionType::class, [
             'entry_type' => ImageCollectionItemType::class,
             'entry_options' => [
                 'required' => false,
@@ -36,19 +72,18 @@ class TestController extends AbstractController
             ],
             'allow_add' => true,
             'allow_delete' => true
-        ]);
-        $form = $form->getForm();
+        ])
+            ->add('submit', SubmitType::class);
 
-        $form->handleRequest($request);
+        return $form->getForm();
+    }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            dump('hoho');
+    private function uploadImage(FilesystemUploader $filesystemManager, FormInterface $form): void
+    {
+        $filesystemManager->setFolder(AbstractMediaBundleTestCase::FOLDER);
+
+        foreach ($form->get('image')->getData() as $file) {
+            $filesystemManager->upload($file);
         }
-
-        return new Response(
-            $environment->render('form/page_index.html.twig', [
-                'form' => $form->createView()
-            ])
-        );
     }
 }

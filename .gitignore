@@ -4,3 +4,8 @@ var
 composer.lock
 .phpunit.result.cache
 .DS_Store
+src/Resources/public/build/manifest.json
+src/Resources/public/build/entrypoints.json
+src/Resources/assets/node_modules
+tests/app/node_modules
+

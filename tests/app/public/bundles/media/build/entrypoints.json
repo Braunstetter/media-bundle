@@ -1,0 +1,9 @@
+{
+  "entrypoints": {
+    "bundle": {
+      "css": [
+        "/bundle.css"
+      ]
+    }
+  }
+}

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Controller\TestController;
 use App\DatabaseLoader;
+use Braunstetter\MediaBundle\Uploader\FilesystemUploader;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\Amnesia\ValueObject\Symfony\Extension\Doctrine\DBAL;
 use Symplify\Amnesia\ValueObject\Symfony\Extension\Doctrine\Mapping;
@@ -35,9 +36,10 @@ return static function(ContainerConfigurator $containerConfigurator): void {
     $services->set(TestController::class)
         ->tag('controller.service_arguments')
         ->tag('controller.service_subscriber')
-        ->autoconfigure(true)
         ->call('setContainer', [service('service_container')])
         ->public();
+
+    $services->set(FilesystemUploader::class);
 
     $containerConfigurator->extension(DoctrineExtension::NAME, [
         DoctrineExtension::DBAL => [

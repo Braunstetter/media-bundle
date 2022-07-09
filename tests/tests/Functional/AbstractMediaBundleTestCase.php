@@ -3,35 +3,77 @@
 namespace Braunstetter\MediaBundle\Tests\Functional;
 
 use App\DatabaseLoader;
+use App\Entity\Media\Image;
 use App\MediaBundleKernel;
+use Braunstetter\MediaBundle\Contracts\UploaderInterface;
+use Braunstetter\MediaBundle\Tests\TestHelper;
+use Braunstetter\MediaBundle\Uploader\FilesystemUploader;
+use Braunstetter\MediaBundle\Tests\AbstractBaseTestCase;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\ToolsException;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Component\Mime\MimeTypes;
+use Symfony\Component\Panther\Client;
+use Symfony\Component\Panther\PantherTestCaseTrait;
+use Symfony\Component\Panther\WebTestAssertionsTrait;
 
-class AbstractMediaBundleTestCase extends TestCase
+abstract class AbstractMediaBundleTestCase extends AbstractBaseTestCase
 {
 
-    /**
-     * @var EntityManagerInterface
-     */
-    protected $entityManager;
+    use WebTestAssertionsTrait;
 
-    private ContainerInterface $container;
+    protected EntityManagerInterface|null $entityManager;
+    protected UploaderInterface|null $uploader;
 
-    public Kernel $kernel;
+    public const FIREFOX = 'firefox';
+    public const CHROME = 'chrome';
+    public const FOLDER = '/tests/images';
+
+    protected ContainerInterface $container;
+    public KernelInterface $kernel;
+
     /**
      * @throws ToolsException
      */
     protected function setUp(): void
     {
-        $this->kernel = new MediaBundleKernel($this->provideCustomConfigs());
-        $this->kernel->boot();
+        $this->kernel = static::bootKernel($this->provideCustomConfigs());
 
         $this->container = $this->kernel->getContainer();
-        $this->entityManager = $this->getService('doctrine.orm.entity_manager');
+
+        $this->entityManager = $this->getService('doctrine.orm.entity_manager') ?? null;
         $this->loadDatabaseFixtures();
+
+        $this->uploader = $this->container->get(FilesystemUploader::class);
+        $this->setFileSystem(new Filesystem());
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        $this->takeScreenshotIfTestFailed();
+
+        $this->fileSystem->remove(TestHelper::getTestsDir());
+
+        // doing this is recommended to avoid memory leaks
+        $this->entityManager->close();
+        $this->entityManager = null;
+    }
+
+    protected static function bootKernel(array $options): KernelInterface
+    {
+        $kernel = static::createKernel($options);
+        $kernel->boot();
+        return $kernel;
+    }
+
+    protected static function createKernel(array $options): KernelInterface
+    {
+        return new MediaBundleKernel($options);
     }
 
     /**
@@ -52,14 +94,29 @@ class AbstractMediaBundleTestCase extends TestCase
         return [];
     }
 
-    /**
-     * @template T as object
-     * @param class-string<T> $type
-     * @return T
-     */
     protected function getService(string $type): object
     {
         return $this->container->get($type);
+    }
+
+    protected function getPersistedImageEntity(): Image
+    {
+        $entity = TestHelper::createImageEntity('person.jpg');
+        $this->uploader->setFolder(self::FOLDER);
+        $this->uploader->upload($entity, false);
+        $this->entityManager->persist($entity);
+        $this->entityManager->flush();
+
+
+        return $entity;
+    }
+
+    protected function initPantherClient(): Client
+    {
+        return static::createPantherClient(array_replace(static::$defaultOptions, [
+            'webServerDir' => TestHelper::getPublicDir(),
+            'port' => 9081
+        ]));
     }
 
 }

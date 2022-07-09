@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Media\Image;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -44,18 +45,25 @@ class Page
     }
 
     /**
-     * @return ArrayCollection
+     * @return Collection
      */
-    public function getImage(): ArrayCollection
+    public function getImage(): Collection
     {
         return $this->image;
     }
-
-    /**
-     * @param ArrayCollection $image
-     */
-    public function setImage(ArrayCollection $image): void
+    public function addImage(Image $image): self
     {
-        $this->image = $image;
+        if (!$this->image->contains($image)) {
+            $this->image[] = $image;
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        $this->image->removeElement($image);
+
+        return $this;
     }
 }

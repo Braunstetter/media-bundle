@@ -1,0 +1,105 @@
+@import "preflight.css";
+@import "mixins/button.css";
+@import "mixins/font.css";
+@import "mixins/image.css";
+
+.cp--form--single_image {
+
+    .image-preview {
+
+        margin-bottom: 0.25rem;
+        height: 14rem;
+        display: flex;
+        align-items: flex-end;
+
+        > svg {
+            flex-shrink: 0;
+            height: 14rem;
+            width: 14rem;
+        }
+
+        > img {
+            max-height: 14rem;
+        }
+    }
+
+    .hidden-input {
+        display: none;
+    }
+}
+
+[data-controller=braunstetter--media-bundle--form-collection] {
+
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+
+    > label {
+        width: 100%;
+    }
+
+    > div.image-collection {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        > * + * {
+            margin-left: 0.5rem
+        }
+    }
+
+    > div.image-collection-actions {
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+
+        > button {
+            display: flex;
+            align-items: center;
+        }
+
+        svg {
+            @mixin svg-md;
+        }
+    }
+
+    .delete-able-image {
+
+        display: flex;
+        align-items: center;
+        color: #334155;
+
+        > * + * {
+            margin-left: 0.75rem;
+            display: flex;
+            align-items: center;
+        }
+
+        > a > svg {
+            @mixin svg-md;
+        }
+
+        > label {
+
+            > * + * {
+                margin-left: 0.25rem;
+            }
+
+            @mixin btn;
+
+            > svg {
+                @mixin svg-md;
+            }
+        }
+    }
+
+    .file-preview {
+        margin-bottom: 1.5rem;
+    }
+}
+
+
+
+
+

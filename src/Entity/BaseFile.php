@@ -30,6 +30,9 @@ abstract class BaseFile implements FileInterface, Serializable
     #[Column(type: 'string', length: 255, nullable: true)]
     protected ?string $mimeType;
 
+    #[Column(type: "string", length: 1255, nullable: true)]
+    protected ?string $folder;
+
     protected ?SplFileInfo $file;
 
     public function getId(): ?int
@@ -72,12 +75,6 @@ abstract class BaseFile implements FileInterface, Serializable
 
         return $this;
     }
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected ?string $folder;
-
 
     public function getFullPath(): string|null
     {

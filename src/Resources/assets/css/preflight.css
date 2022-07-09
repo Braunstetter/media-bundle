@@ -1,0 +1,19 @@
+button {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 1 */
+    line-height: inherit; /* 1 */
+    color: inherit; /* 1 */
+    margin: 0; /* 2 */
+    padding: 0; /* 3 */
+    text-transform: none;
+    -webkit-appearance: button; /* 1 */
+    background-color: transparent; /* 2 */
+    background-image: none; /* 2 */
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+:disabled {
+    cursor: default;
+}

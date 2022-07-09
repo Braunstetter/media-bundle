@@ -1,6 +1,6 @@
 <?php
 
-namespace Braunstetter\MediaBundle\Tests\tests\Unit;
+namespace Braunstetter\MediaBundle\Tests\Unit;
 
 use App\Entity\Media\Image;
 use PHPUnit\Framework\TestCase;

@@ -1,0 +1,4 @@
+{
+  "bundles/media/bundle.css": "/bundle.css",
+  "bundles/media/../images/image-placeholder.jpg": "/./../images/image-placeholder.jpg"
+}

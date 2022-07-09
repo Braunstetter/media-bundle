@@ -1,6 +1,6 @@
 <?php
 
-namespace Braunstetter\MediaBundle\Tests\tests;
+namespace Braunstetter\MediaBundle\Tests;
 
 use Braunstetter\MediaBundle\DependencyInjection\MediaBundleExtension;
 use Braunstetter\MediaBundle\MediaBundle;

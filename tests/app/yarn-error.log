@@ -1,0 +1,43 @@
+Arguments: 
+  /usr/local/Cellar/node/18.2.0/bin/node /usr/local/Cellar/yarn/1.22.19/libexec/bin/yarn.js install
+
+PATH: 
+  /usr/local/sbin:/usr/local/bin:/usr/local/mysql-5.7.29-macos10.14-x86_64/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/.composer/vendor/bin:/Users/michaelbrauner/.composer/vendor/bin:/Library/Apple/usr/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.2.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/michaelbrauner/Bundles/Symfony/MediaBundle/Bundle/tests/app/package.json: Unexpected token } in JSON at position 98
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:310:30)
+      at /usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "devDependencies": {
+      "@braunstetter/media-bundle": "file:./../../src/Resources/assets",
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+      "dev-server": "encore dev-server",
+      "dev": "encore dev",
+      "watch": "encore dev --watch",
+      "build": "encore production --progress"
+    }
+  },
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

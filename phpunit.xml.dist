@@ -27,4 +27,8 @@
         </testsuite>
     </testsuites>
 
+    <extensions>
+        <extension class="Symfony\Component\Panther\ServerExtension" />
+    </extensions>
+
 </phpunit>

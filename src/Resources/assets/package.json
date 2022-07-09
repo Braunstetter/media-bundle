@@ -1,0 +1,45 @@
+{
+  "name": "@braunstetter/media-bundle",
+  "version": "1.0.0",
+  "description": "Javascript for @braunstetter/media-bundle",
+  "author": "Michael Brauner",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  },
+  "symfony": {
+    "controllers": {
+      "form_collection": {
+        "main": "controllers/form_collection_controller.js",
+        "webpackMode": "eager",
+        "fetch": "eager",
+        "enabled": true
+      },
+      "image_upload": {
+        "main": "controllers/image_upload_controller.js",
+        "webpackMode": "eager",
+        "fetch": "eager",
+        "enabled": true
+      }
+    }
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^1.5.0",
+    "autoprefixer": "^10.3.1",
+    "cssnano": "^5.1.12",
+    "file-loader": "^6.0.0",
+    "postcss": "^8.3.5",
+    "postcss-import": "^14.0.2",
+    "postcss-loader": "^5.0.0",
+    "postcss-mixins": "^9.0.3",
+    "postcss-nested": "^5.0.6",
+    "@hotwired/stimulus": "^3.0.0"
+  },
+  "peerDependencies": {
+    "@hotwired/stimulus": "^3.0.0"
+  }
+}

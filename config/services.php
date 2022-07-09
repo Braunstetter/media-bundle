@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Braunstetter\MediaBundle\Entity\EventListeners\FileDeleteListener;
-use Braunstetter\MediaBundle\Manager\FilesystemManager;
+use Braunstetter\MediaBundle\Uploader\FilesystemUploader;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -22,7 +22,7 @@ return static function(ContainerConfigurator $containerConfigurator): void {
     $services->load('Braunstetter\MediaBundle\\', __DIR__ . '/../src')
         ->exclude([__DIR__ . '/../src/MediaBundle.php']);
 
-    $services->set(FilesystemManager::class)
+    $services->set(FilesystemUploader::class)
         ->arg('$logger', service(LoggerInterface::class))
         ->arg('$filesystem', service(Symfony\Component\Filesystem\Filesystem::class))
         ->arg('$slugger', service(SluggerInterface::class))

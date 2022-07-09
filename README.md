@@ -80,7 +80,7 @@ By default, it's the name of the file entity class in lowercase.
 You should name your media entities with a media-type in mind.
 E.g. `Image` or `Document`.
 
-# FileManager
+# Uploader
 
 A file manager is a service for handling your files.
 
@@ -89,8 +89,8 @@ A file manager is a service for handling your files.
 Just inject a manager inside your service and use it:
 
 ```php
-$fileManager->setFolder('/image/redactor')
-$fileManager->upload($imageEntity)
+$uploader->setFolder('/image/redactor')
+$uploader->upload($imageEntity)
 ```
 Here you are working with your entity. As long as your form has filled the `file` property with a file. The image will be uploaded. That's super easy and fun.
 
@@ -98,7 +98,7 @@ By default, the uploader will save the file to `public/image/redactor/my-slugged
 Pay attention to the filename. It is getting slugged by default - and it is getting suffixed with an uniq id. You can disable the `uniqFileName` by passing `false` as a second argument. 
 
 ```php 
-$fileManager->upload($imageEntity, false)
+$uploader->upload($imageEntity, false)
 ```
 
 Currently, this bundle delivers 1 File-manager:
