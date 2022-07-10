@@ -69,9 +69,11 @@ abstract class BaseFile implements FileInterface, Serializable
         return $this->mimeType ?? null;
     }
 
-    public function setMimeType(string $mimeType): self
+    public function setMimeType(string|null $mimeType): self
     {
-        $this->mimeType = $mimeType;
+        if ($mimeType) {
+            $this->mimeType = $mimeType;
+        }
 
         return $this;
     }

@@ -27,7 +27,7 @@ abstract class AbstractMediaBundleTestCase extends AbstractBaseTestCase
     use WebTestAssertionsTrait;
 
     protected EntityManagerInterface|null $entityManager;
-    protected UploaderInterface|null $uploader;
+    protected UploaderInterface $uploader;
 
     public const FIREFOX = 'firefox';
     public const CHROME = 'chrome';
@@ -48,7 +48,11 @@ abstract class AbstractMediaBundleTestCase extends AbstractBaseTestCase
         $this->entityManager = $this->getService('doctrine.orm.entity_manager') ?? null;
         $this->loadDatabaseFixtures();
 
-        $this->uploader = $this->container->get(FilesystemUploader::class);
+        $uploader = $this->container->get(FilesystemUploader::class);
+        if ($uploader instanceof UploaderInterface) {
+            $this->uploader = $uploader;
+        }
+
         $this->setFileSystem(new Filesystem());
     }
 
@@ -58,6 +62,10 @@ abstract class AbstractMediaBundleTestCase extends AbstractBaseTestCase
         $this->takeScreenshotIfTestFailed();
 
         $this->fileSystem->remove(TestHelper::getTestsDir());
+
+        if (!$this->entityManager) {
+            return;
+        }
 
         // doing this is recommended to avoid memory leaks
         $this->entityManager->close();

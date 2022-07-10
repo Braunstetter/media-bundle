@@ -9,7 +9,7 @@ use Braunstetter\MediaBundle\Tests\TestHelper;
 class EventListenerTest extends AbstractMediaBundleTestCase
 {
 
-    public function testImageGetsRemovedWhenEntityGetsRemoved()
+    public function testImageGetsRemovedWhenEntityGetsRemoved(): void
     {
         $entity = $this->getPersistedImageEntity();
 

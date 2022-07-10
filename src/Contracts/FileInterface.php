@@ -15,7 +15,7 @@ interface FileInterface
 
     public function setFilename(string $filename);
     public function setOriginalFilename(string $originalFilename): self;
-    public function setMimeType(string $mimeType): self;
+    public function setMimeType(string|null $mimeType): self;
     public function setFile(?SplFileInfo $file): void;
     public function setFolder(string $folder);
     public function hasFile(): bool;

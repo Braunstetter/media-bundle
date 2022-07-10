@@ -48,7 +48,7 @@ class TestController extends AbstractController
      * @throws RuntimeError
      * @throws LoaderError
      */
-    public function testWithExistingImage(FormFactoryInterface $formFactory, Environment $environment, Request $request, FilesystemUploader $filesystemManager): Response
+    public function testWithExistingImage(FormFactoryInterface $formFactory, Environment $environment, FilesystemUploader $filesystemManager): Response
     {
         $page = new Page();
         $page->addImage(TestHelper::createImageEntity('person.jpg'));

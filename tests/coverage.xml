@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1657401649">
-  <project timestamp="1657401649">
+<coverage generated="1657438361">
+  <project timestamp="1657438361">
     <file name="/Users/michaelbrauner/Bundles/Symfony/MediaBundle/Bundle/src/Contracts/FileInterface.php">
       <metrics loc="24" ncloc="24" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
@@ -24,7 +24,7 @@
     </file>
     <file name="/Users/michaelbrauner/Bundles/Symfony/MediaBundle/Bundle/src/Entity/BaseFile.php">
       <class name="Braunstetter\MediaBundle\Entity\BaseFile" namespace="global">
-        <metrics complexity="20" methods="17" coveredmethods="17" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="28" elements="45" coveredelements="45"/>
+        <metrics complexity="21" methods="17" coveredmethods="17" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="29" elements="46" coveredelements="46"/>
       </class>
       <line num="38" type="method" name="getId" visibility="public" complexity="1" crap="1" count="3"/>
       <line num="40" type="stmt" count="3"/>
@@ -40,38 +40,39 @@
       <line num="64" type="stmt" count="12"/>
       <line num="67" type="method" name="getMimeType" visibility="public" complexity="1" crap="1" count="4"/>
       <line num="69" type="stmt" count="4"/>
-      <line num="72" type="method" name="setMimeType" visibility="public" complexity="1" crap="1" count="12"/>
+      <line num="72" type="method" name="setMimeType" visibility="public" complexity="2" crap="2" count="12"/>
       <line num="74" type="stmt" count="12"/>
-      <line num="76" type="stmt" count="12"/>
-      <line num="79" type="method" name="getFullPath" visibility="public" complexity="3" crap="3" count="14"/>
-      <line num="81" type="stmt" count="14"/>
-      <line num="82" type="stmt" count="7"/>
+      <line num="75" type="stmt" count="12"/>
+      <line num="78" type="stmt" count="12"/>
+      <line num="81" type="method" name="getFullPath" visibility="public" complexity="3" crap="3" count="14"/>
       <line num="83" type="stmt" count="14"/>
-      <line num="86" type="method" name="getType" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="88" type="stmt" count="2"/>
-      <line num="94" type="method" name="getFolder" visibility="public" complexity="1" crap="1" count="8"/>
-      <line num="96" type="stmt" count="8"/>
-      <line num="102" type="method" name="setFolder" visibility="public" complexity="1" crap="1" count="12"/>
-      <line num="104" type="stmt" count="12"/>
-      <line num="107" type="method" name="getFile" visibility="public" complexity="1" crap="1" count="12"/>
-      <line num="109" type="stmt" count="12"/>
-      <line num="112" type="method" name="setFile" visibility="public" complexity="1" crap="1" count="11"/>
-      <line num="114" type="stmt" count="11"/>
-      <line num="117" type="method" name="hasFile" visibility="public" complexity="1" crap="1" count="13"/>
-      <line num="119" type="stmt" count="13"/>
-      <line num="123" type="method" name="serialize" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="125" type="stmt" count="2"/>
-      <line num="126" type="stmt" count="2"/>
+      <line num="84" type="stmt" count="7"/>
+      <line num="85" type="stmt" count="14"/>
+      <line num="88" type="method" name="getType" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="90" type="stmt" count="2"/>
+      <line num="96" type="method" name="getFolder" visibility="public" complexity="1" crap="1" count="8"/>
+      <line num="98" type="stmt" count="8"/>
+      <line num="104" type="method" name="setFolder" visibility="public" complexity="1" crap="1" count="12"/>
+      <line num="106" type="stmt" count="12"/>
+      <line num="109" type="method" name="getFile" visibility="public" complexity="1" crap="1" count="12"/>
+      <line num="111" type="stmt" count="12"/>
+      <line num="114" type="method" name="setFile" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="116" type="stmt" count="11"/>
+      <line num="119" type="method" name="hasFile" visibility="public" complexity="1" crap="1" count="13"/>
+      <line num="121" type="stmt" count="13"/>
+      <line num="125" type="method" name="serialize" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="127" type="stmt" count="2"/>
       <line num="128" type="stmt" count="2"/>
       <line num="129" type="stmt" count="2"/>
-      <line num="134" type="method" name="unserialize" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="136" type="stmt" count="1"/>
-      <line num="139" type="method" name="__toString" visibility="public" complexity="2" crap="2" count="1"/>
-      <line num="141" type="stmt" count="1"/>
-      <line num="142" type="stmt" count="1"/>
-      <line num="145" type="stmt" count="1"/>
-      <metrics loc="148" ncloc="140" classes="1" methods="17" coveredmethods="17" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="28" elements="45" coveredelements="45"/>
+      <line num="130" type="stmt" count="2"/>
+      <line num="131" type="stmt" count="2"/>
+      <line num="136" type="method" name="unserialize" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="138" type="stmt" count="1"/>
+      <line num="141" type="method" name="__toString" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="143" type="stmt" count="1"/>
+      <line num="144" type="stmt" count="1"/>
+      <line num="147" type="stmt" count="1"/>
+      <metrics loc="150" ncloc="142" classes="1" methods="17" coveredmethods="17" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="29" elements="46" coveredelements="46"/>
     </file>
     <file name="/Users/michaelbrauner/Bundles/Symfony/MediaBundle/Bundle/src/Entity/EventListeners/FileDeleteListener.php">
       <class name="Braunstetter\MediaBundle\Entity\EventListeners\FileDeleteListener" namespace="global">
@@ -201,6 +202,6 @@
       <line num="115" type="stmt" count="11"/>
       <metrics loc="117" ncloc="112" classes="1" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="32" elements="42" coveredelements="42"/>
     </file>
-    <metrics files="9" loc="515" ncloc="491" classes="7" methods="42" coveredmethods="42" conditionals="0" coveredconditionals="0" statements="110" coveredstatements="110" elements="152" coveredelements="152"/>
+    <metrics files="9" loc="517" ncloc="493" classes="7" methods="42" coveredmethods="42" conditionals="0" coveredconditionals="0" statements="111" coveredstatements="111" elements="153" coveredelements="153"/>
   </project>
 </coverage>

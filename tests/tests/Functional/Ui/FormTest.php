@@ -32,7 +32,7 @@ class FormTest extends AbstractMediaBundleTestCase
         $this->assertTrue($client->getResponse()->isSuccessful());
         $this->assertStringStartsWith(
             'http://localhost',
-            $client->getCrawler()->filter('.image-preview > img')->attr('src')
+            $client->getCrawler()->filter('.image-preview > img')->attr('src') ?? ''
         );
     }
 
