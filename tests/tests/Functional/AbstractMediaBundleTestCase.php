@@ -26,7 +26,7 @@ abstract class AbstractMediaBundleTestCase extends AbstractBaseTestCase
 
     use WebTestAssertionsTrait;
 
-    protected EntityManagerInterface|null $entityManager;
+    protected EntityManagerInterface $entityManager;
     protected UploaderInterface $uploader;
 
     public const FIREFOX = 'firefox';
@@ -45,7 +45,11 @@ abstract class AbstractMediaBundleTestCase extends AbstractBaseTestCase
 
         $this->container = $this->kernel->getContainer();
 
-        $this->entityManager = $this->getService('doctrine.orm.entity_manager') ?? null;
+        $entityManager = $this->getService('doctrine.orm.entity_manager');
+        if ($entityManager instanceof EntityManagerInterface) {
+            $this->entityManager = $entityManager;
+        }
+
         $this->loadDatabaseFixtures();
 
         $uploader = $this->container->get(FilesystemUploader::class);
@@ -69,7 +73,6 @@ abstract class AbstractMediaBundleTestCase extends AbstractBaseTestCase
 
         // doing this is recommended to avoid memory leaks
         $this->entityManager->close();
-        $this->entityManager = null;
     }
 
     protected static function bootKernel(array $options): KernelInterface

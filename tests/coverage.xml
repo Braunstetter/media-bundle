@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1657438361">
-  <project timestamp="1657438361">
+<coverage generated="1657438811">
+  <project timestamp="1657438811">
     <file name="/Users/michaelbrauner/Bundles/Symfony/MediaBundle/Bundle/src/Contracts/FileInterface.php">
       <metrics loc="24" ncloc="24" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
