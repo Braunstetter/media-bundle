@@ -48,7 +48,7 @@ return static function(ContainerConfigurator $containerConfigurator): void {
             DBAL::USER => env('DB_USER'),
             DBAL::PASSWORD => env('DB_PASSWD'),
             DBAL::DRIVER => env('DB_ENGINE'),
-            DBAL::MEMORY => (bool)env('DB_MEMORY'),
+            DBAL::MEMORY => (bool) env('DB_MEMORY'),
         ],
 
         DoctrineExtension::ORM => [

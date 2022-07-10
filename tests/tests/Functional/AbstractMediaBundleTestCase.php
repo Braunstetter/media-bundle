@@ -67,10 +67,6 @@ abstract class AbstractMediaBundleTestCase extends AbstractBaseTestCase
 
         $this->fileSystem->remove(TestHelper::getTestsDir());
 
-        if (!$this->entityManager) {
-            return;
-        }
-
         // doing this is recommended to avoid memory leaks
         $this->entityManager->close();
     }
@@ -105,7 +101,7 @@ abstract class AbstractMediaBundleTestCase extends AbstractBaseTestCase
         return [];
     }
 
-    protected function getService(string $type): object
+    protected function getService(string $type): object|null
     {
         return $this->container->get($type);
     }

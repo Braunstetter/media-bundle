@@ -102,6 +102,10 @@ class FilesystemUploader implements UploaderInterface
     {
         $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
 
+        if (!is_string($originalFilename)) {
+            return $file->getClientOriginalName();
+        }
+        
         return $this->slugger->slug($originalFilename) . ($uniqFileName ? '-' . uniqid() : '') . '.' . $file->guessExtension();
     }
 
