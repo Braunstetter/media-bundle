@@ -37,9 +37,12 @@ export default class extends Controller {
     }
 
     itemsCountValueChanged() {
+
         if (false === this.hasAddButtonTarget || 0 === this.maxItemsValue) {
             return
         }
+        console.log(this.hasAddButtonTarget)
+        console.log(this.maxItemsValue)
         const maxItemsReached = this.itemsCountValue >= this.maxItemsValue
         this.addButtonTarget.classList.toggle('hidden', maxItemsReached)
     }

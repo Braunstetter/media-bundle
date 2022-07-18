@@ -5,6 +5,8 @@ namespace Braunstetter\MediaBundle\Tests\Functional\Ui;
 use Braunstetter\MediaBundle\Tests\Functional\AbstractMediaBundleTestCase;
 use Braunstetter\MediaBundle\Tests\TestHelper;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
+use Symfony\Component\BrowserKit\AbstractBrowser;
+use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Panther\DomCrawler\Field\FileFormField;
 
 class FormTest extends AbstractMediaBundleTestCase
@@ -14,6 +16,8 @@ class FormTest extends AbstractMediaBundleTestCase
     {
         $client = $this->initPantherClient();
         $client->request('GET', '/test');
+
+        $client->takeScreenshot(__dir__ . '/screenshots/empty_form.png');
 
         /** @var FileFormField $fileFormField */
         $fileFormField = $client->getCrawler()->selectButton('Submit')->form()['form[image][0][file]'];
@@ -30,10 +34,58 @@ class FormTest extends AbstractMediaBundleTestCase
         $client->request('GET', '/test-existing-image');
 
         $this->assertTrue($client->getResponse()->isSuccessful());
+
         $this->assertStringStartsWith(
             'http://localhost',
             $client->getCrawler()->filter('.image-preview > img')->attr('src') ?? ''
         );
+    }
+
+    public function test_collection_item_is_added()
+    {
+        $client = $this->initPantherClient();
+        $client->request('GET', '/test');
+        $crawler = $client->getCrawler();
+
+        $crawler->filter('div.image-collection-actions > button')->click();
+        $this->assertSame(2, $crawler->filter('.image-collection > div')->count());
+
+        $crawler->filter('div.image-collection-actions > button')->click();
+        $this->assertSame(3, $crawler->filter('.image-collection > div')->count());
+
+        $client->takeScreenshot(__dir__ . '/screenshots/collection_item_gets_added.png');
+    }
+
+    public function test_max_items_option_hides_add_button()
+    {
+        $client = $this->initPantherClient();
+
+        $client->request('GET', '/test-two-existing-images?options=' . json_encode(['max_items' => 3]));
+
+        $client->getCrawler()->filter('div.image-collection-actions > button')->click();
+        $this->assertSame(3, $this->getImageCount($client->getCrawler()));
+        $this->assertSame(1, $this->getAddButton($client, false)->count());
+
+        $client->takeScreenshot(__dir__ . '/screenshots/max_items_option_hides_add_button.png');
+    }
+
+    public function test_max_items_option_hides_add_button_on_initial_pageload()
+    {
+        $client = new KernelBrowser($this->kernel);
+        $client->request('GET', '/test-two-existing-images?options=' . json_encode(['max_items' => 2]));
+
+        $this->assertSame(1, $this->getAddButton($client, false)->count());
+    }
+
+    private function getAddButton(AbstractBrowser $client, bool $enabled = true): Crawler
+    {
+        $basePath = 'div.image-collection-actions > button';
+        return $client->getCrawler()->filter($enabled ? $basePath : $basePath . '.hidden');
+    }
+
+    private function getImageCount(Crawler $crawler): int
+    {
+        return $crawler->filter('.image-collection > div')->count();
     }
 
 }

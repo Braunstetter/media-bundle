@@ -1,7 +1,7 @@
 {% block image_collection_widget %}
     {% trans_default_domain 'media' %}
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('/bundles/media/build/bundle.css' ) }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/bundles/media/build/bundle.css' ) }}"/>
 
     {% if prototype is defined and not prototype.rendered %}
         {%- set attr = attr|merge({'data-prototype': form_row(prototype) }) -%}
@@ -11,7 +11,11 @@
 
     {% if allow_add %}
         <div class="image-collection-actions">
-            <button data-braunstetter--media-bundle--form-collection-target="addButton" data-action="braunstetter--media-bundle--form-collection#addItem">
+            <button
+                    data-braunstetter--media-bundle--form-collection-target="addButton"
+                    data-action="braunstetter--media-bundle--form-collection#addItem"
+                    {% if max_items <= value.count %}class="hidden"{% endif %}
+            >
                 {{ source('@Media/images/svg/icon-plus.svg') }}
             </button>
         </div>
@@ -42,7 +46,8 @@
 {% block image_preview %}
     <div class="image-preview">
         {% if form.vars.value.fullPath|default(null) is not null %}
-            <img src="{{ form.vars.value.fullPath|imagine_filter('form_preview') }}" alt="{{ form.vars.value.altText ?? form.vars.value.fileName }}"/>
+            <img src="{{ form.vars.value.fullPath|imagine_filter('form_preview') }}"
+                 alt="{{ form.vars.value.altText ?? form.vars.value.fileName }}"/>
         {% else %}
             <img src="{{ asset(placeholder_image_path) }}" alt="avatar"/>
         {% endif %}

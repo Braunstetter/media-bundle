@@ -66,6 +66,7 @@ abstract class AbstractMediaBundleTestCase extends AbstractBaseTestCase
         $this->takeScreenshotIfTestFailed();
 
         $this->fileSystem->remove(TestHelper::getTestsDir());
+        $this->fileSystem->remove(TestHelper::getPublicDir() . '/media');
 
         // doing this is recommended to avoid memory leaks
         $this->entityManager->close();

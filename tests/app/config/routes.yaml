@@ -6,5 +6,9 @@ test_existing_image:
   path: /test-existing-image
   controller: App\Controller\TestController::testWithExistingImage
 
+test_two_existing_images:
+  path: /test-two-existing-images
+  controller: App\Controller\TestController::testWithTwoExistingImages
+
 liip_imagine:
   resource: '@LiipImagineBundle/Resources/config/routing.yaml'

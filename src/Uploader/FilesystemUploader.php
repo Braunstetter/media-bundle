@@ -10,6 +10,7 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\VarDumper\VarDumper;
 use Webmozart\Assert\Assert;
 
 class FilesystemUploader implements UploaderInterface
@@ -100,13 +101,7 @@ class FilesystemUploader implements UploaderInterface
 
     private function createFilename(UploadedFile $file, bool $uniqFileName = true): string
     {
-        $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-
-        if (!is_string($originalFilename)) {
-            return $file->getClientOriginalName();
-        }
-        
-        return $this->slugger->slug($originalFilename) . ($uniqFileName ? '-' . uniqid() : '') . '.' . $file->guessExtension();
+        return $this->slugger->slug(pathinfo($file->getClientOriginalName())['filename']) . ($uniqFileName ? '-' . uniqid() : '') . '.' . $file->guessExtension();
     }
 
     private function createNewFilename(UploadedFile $file, bool $uniqFileName): string

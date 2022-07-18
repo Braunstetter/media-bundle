@@ -31,9 +31,10 @@ class ImageCollectionType extends AbstractType
         $view->vars = array_replace($view->vars, [
             'row_attr' => Arr::attachToAttr($view->vars['row_attr'], [
                 'data-controller' => 'braunstetter--media-bundle--form-collection',
-                'data-form-collection-max-items-value' => $options['max_items']
+                'data-braunstetter--media-bundle--form-collection-max-items-value' => $options['max_items']
             ]),
-            'attr' => Arr::attachClassToAttr($view->vars['attr'], 'image-collection')
+            'attr' => Arr::attachClassToAttr($view->vars['attr'], 'image-collection'),
+            'max_items' => $options['max_items']
         ]);
     }
 
@@ -46,7 +47,6 @@ class ImageCollectionType extends AbstractType
             ->allowedTypes('int')
             ->info('The maximal items allowed for this collection.');
     }
-
 
     public function getParent(): string
     {
