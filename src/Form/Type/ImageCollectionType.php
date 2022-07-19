@@ -34,7 +34,8 @@ class ImageCollectionType extends AbstractType
                 'data-braunstetter--media-bundle--form-collection-max-items-value' => $options['max_items']
             ]),
             'attr' => Arr::attachClassToAttr($view->vars['attr'], 'image-collection'),
-            'max_items' => $options['max_items']
+            'max_items' => $options['max_items'],
+            'include_css' => $options['include_css']
         ]);
     }
 
@@ -42,10 +43,16 @@ class ImageCollectionType extends AbstractType
     {
         $resolver->setDefault('by_reference', false);
         $resolver->setDefault('allow_delete', true);
+
         $resolver->define('max_items')
             ->default(9999)
             ->allowedTypes('int')
             ->info('The maximal items allowed for this collection.');
+
+        $resolver->define('include_css')
+            ->default(true)
+            ->allowedTypes('bool')
+            ->info('Determines whether the supplied css should be injected.');
     }
 
     public function getParent(): string

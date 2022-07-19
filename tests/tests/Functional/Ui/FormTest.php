@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Component\BrowserKit\AbstractBrowser;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Panther\DomCrawler\Field\FileFormField;
+use Symfony\Component\VarDumper\VarDumper;
 
 class FormTest extends AbstractMediaBundleTestCase
 {
@@ -75,6 +76,21 @@ class FormTest extends AbstractMediaBundleTestCase
         $client->request('GET', '/test-two-existing-images?options=' . json_encode(['max_items' => 2]));
 
         $this->assertSame(1, $this->getAddButton($client, false)->count());
+    }
+
+    public function test_include_css_option_default_include_css()
+    {
+        $client = new KernelBrowser($this->kernel);
+        $client->request('GET', '/test');
+
+        $this->assertSame(1, $client->getCrawler()->filterXPath('//link[contains(@href, "/bundles/media/build/bundle.css")]')->count());
+    }
+
+    public function test_include_css_option_do_not_include_css_when_set_to_false()
+    {
+        $client = new KernelBrowser($this->kernel);
+        $client->request('GET', '/test?options=' . json_encode(['include_css' => false]));
+        $this->assertSame(0, $client->getCrawler()->filterXPath('//link[contains(@href, "/bundles/media/build/bundle.css")]')->count());
     }
 
     private function getAddButton(AbstractBrowser $client, bool $enabled = true): Crawler
