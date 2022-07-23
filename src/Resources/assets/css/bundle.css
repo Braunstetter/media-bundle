@@ -28,7 +28,7 @@
     }
 }
 
-[data-controller=braunstetter--media-bundle--form-collection] {
+[data-controller=braunstetter--media-bundle--collection] {
 
     width: 100%;
     display: flex;

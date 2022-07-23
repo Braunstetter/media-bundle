@@ -1,4 +1,4 @@
-{% block image_collection_widget %}
+{% block media_collection_widget %}
     {% trans_default_domain 'media' %}
 
     {% if include_css %}
@@ -14,8 +14,8 @@
     {% if allow_add %}
         <div class="image-collection-actions">
             <button
-                    data-braunstetter--media-bundle--form-collection-target="addButton"
-                    data-action="braunstetter--media-bundle--form-collection#addItem"
+                    data-braunstetter--media-bundle--collection-target="addButton"
+                    data-action="braunstetter--media-bundle--collection#addItem"
                     {% if max_items <= value.count %}class="hidden"{% endif %}
             >
                 {{ source('@Media/images/svg/icon-plus.svg') }}
@@ -24,7 +24,7 @@
     {% endif %}
 {% endblock %}
 
-{% block image_collection_item_widget %}
+{% block media_image_widget %}
 
     {{ block('image_preview') }}
     {{ block('hidden_file') }}
@@ -72,5 +72,5 @@
 
 {% block trash_link %}
     <a href="{{ delete_path ?? '#' }}"
-       {% if delete_path is not defined %}data-action="braunstetter--media-bundle--form-collection#removeItem"{% endif %}>{{ source('@Media/images/svg/icon-trash.svg') }}</a>
+       {% if delete_path is not defined %}data-action="braunstetter--media-bundle--collection#removeItem"{% endif %}>{{ source('@Media/images/svg/icon-trash.svg') }}</a>
 {% endblock %}

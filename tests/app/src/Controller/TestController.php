@@ -4,8 +4,8 @@ namespace App\Controller;
 
 
 use App\Entity\Page;
-use Braunstetter\MediaBundle\Form\Type\ImageCollectionItemType;
-use Braunstetter\MediaBundle\Form\Type\ImageCollectionType;
+use Braunstetter\MediaBundle\Form\Type\ImageType;
+use Braunstetter\MediaBundle\Form\Type\MediaCollectionType;
 use Braunstetter\MediaBundle\Tests\Functional\AbstractMediaBundleTestCase;
 use Braunstetter\MediaBundle\Tests\TestHelper;
 use Braunstetter\MediaBundle\Uploader\FilesystemUploader;
@@ -24,7 +24,7 @@ use Twig\Error\SyntaxError;
 class TestController extends AbstractController
 {
     const BASE_FORM_OPTIONS = [
-        'entry_type' => ImageCollectionItemType::class,
+        'entry_type' => ImageType::class,
         'entry_options' => [
             'required' => false,
             'label' => false,
@@ -95,7 +95,7 @@ class TestController extends AbstractController
             ? array_replace(static::BASE_FORM_OPTIONS, $options)
             : static::BASE_FORM_OPTIONS;
 
-        $form->add('image', ImageCollectionType::class, $options)
+        $form->add('image', MediaCollectionType::class, $options)
             ->add('submit', SubmitType::class);
 
 

@@ -13,8 +13,8 @@
   },
   "symfony": {
     "controllers": {
-      "form_collection": {
-        "main": "controllers/form_collection_controller.js",
+      "collection": {
+        "main": "controllers/collection_controller.js",
         "webpackMode": "eager",
         "fetch": "eager",
         "enabled": true

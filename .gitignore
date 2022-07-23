@@ -1,4 +1,5 @@
 /vendor
+/drivers
 .idea
 var
 composer.lock

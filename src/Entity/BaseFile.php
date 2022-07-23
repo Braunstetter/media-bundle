@@ -3,7 +3,6 @@
 namespace Braunstetter\MediaBundle\Entity;
 
 use Braunstetter\MediaBundle\Contracts\FileInterface;
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
