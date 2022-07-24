@@ -40,7 +40,7 @@ install:
 before_script:
   -  yarn --cwd ./src/Resources/assets install --force
   -  yarn --cwd ./tests/app install --force
-  -  yarn --cwd ./src/Resources/assets yarn dev
+  -  yarn --cwd ./src/Resources/assets  dev
   -  yarn --cwd ./tests/app install --force
   -  yarn --cwd ./tests/app dev
 script:
