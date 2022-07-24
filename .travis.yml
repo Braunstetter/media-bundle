@@ -22,6 +22,7 @@ matrix:
 
 before_install:
   - phpenv config-rm xdebug.ini || true
+  - nvm install 16
   - nvm use 16
   - npm i -g npm@8
 
