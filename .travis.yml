@@ -1,5 +1,7 @@
 language: php
 sudo: false
+node_js:
+  - 16
 cache:
   directories:
     - $HOME/.composer/cache/files
