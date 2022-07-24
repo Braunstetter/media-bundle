@@ -31,8 +31,15 @@ install:
     else
         composer update --prefer-dist
     fi
+  - npm install --global yarn
   - ./vendor/bin/simple-phpunit install
 
+before_script:
+  - ./src/Resources/assets yarn install --force
+  - ./tests/app yarn install --force
+  - ./src/Resources/assets yarn dev
+  - ./tests/app yarn install --force
+  - ./tests/app yarn dev
 script:
   - composer validate --strict --no-check-lock
   - ./vendor/bin/bdi detect drivers
