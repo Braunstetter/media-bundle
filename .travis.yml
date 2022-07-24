@@ -35,11 +35,11 @@ install:
   - ./vendor/bin/simple-phpunit install
 
 before_script:
-  - ./src/Resources/assets yarn install --force
-  - ./tests/app yarn install --force
-  - ./src/Resources/assets yarn dev
-  - ./tests/app yarn install --force
-  - ./tests/app yarn dev
+  -  yarn --cwd ./src/Resources/assets install --force
+  -  yarn --cwd ./tests/app install --force
+  -  yarn --cwd ./src/Resources/assets yarn dev
+  -  yarn --cwd ./tests/app install --force
+  -  yarn --cwd ./tests/app dev
 script:
   - composer validate --strict --no-check-lock
   - ./vendor/bin/bdi detect drivers
