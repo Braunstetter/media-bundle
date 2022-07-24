@@ -1,7 +1,5 @@
 language: php
 sudo: false
-node_js:
-  - 16
 cache:
   directories:
     - $HOME/.composer/cache/files
@@ -24,6 +22,7 @@ matrix:
 
 before_install:
   - phpenv config-rm xdebug.ini || true
+  - nvm use 16
   - npm i -g npm@8
 
 install:
