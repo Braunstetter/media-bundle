@@ -20,18 +20,38 @@ abstract class BaseFile implements FileInterface, Serializable
     #[GeneratedValue(strategy: 'AUTO')]
     protected ?int $id;
 
+    /**
+     * Custom name of a file.
+     * It is generated or set by the user depending
+     * on your implementation inside your Uploader
+     */
     #[Column(type: 'string', length: 255, nullable: true)]
     protected ?string $filename;
 
+    /**
+     * The original name of the file, before it was getting uploaded.
+     */
     #[Column(type: 'string', length: 255, nullable: true)]
     protected ?string $originalFilename;
 
+    /**
+     * The mimeType of the file.
+     */
     #[Column(type: 'string', length: 255, nullable: true)]
     protected ?string $mimeType;
 
+    /**
+     * The folder of this file - where the file is located.
+     * It should be the real path from inside the public dir of your application.
+     */
     #[Column(type: "string", length: 1255, nullable: true)]
     protected ?string $folder;
 
+    /**
+     * This property is only used for uploading.
+     * Therefore, it can be null (nothing to upload and/or change) or it can be an instance of `SplFileInfo`.
+     * This bundle ships with FormTypes which are working with this property to know if a file is ready get processed or not.
+     */
     protected ?SplFileInfo $file;
 
     public function getId(): ?int
@@ -77,6 +97,10 @@ abstract class BaseFile implements FileInterface, Serializable
         return $this;
     }
 
+    /**
+     * This method puts together `folder` and `filename` if set.
+     * These properties both has to be set. Otherwise, this method returns null.
+     */
     public function getFullPath(): string|null
     {
         return isset($this->folder) && $this->getFilename()
@@ -84,22 +108,22 @@ abstract class BaseFile implements FileInterface, Serializable
             : null;
     }
 
+    /**
+     * The type of your file.
+     * By default, it's the name of the file entity class in lowercase.
+     * You should name your media entities with a media-type in mind.
+     * E.g. `Image` or `Document`.
+     */
     public function getType(): string
     {
         return strtolower((new ReflectionClass($this))->getShortName());
     }
 
-    /**
-     * @return string|null
-     */
     public function getFolder(): ?string
     {
         return $this->folder;
     }
 
-    /**
-     * @param string|null $folder
-     */
     public function setFolder(?string $folder): void
     {
         $this->folder = $folder;

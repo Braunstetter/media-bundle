@@ -43,6 +43,7 @@ before_script:
   -  yarn --cwd ./src/Resources/assets  dev
   -  yarn --cwd ./tests/app install --force
   -  yarn --cwd ./tests/app dev
+
 script:
   - composer validate --strict --no-check-lock
   - ./vendor/bin/bdi detect drivers
