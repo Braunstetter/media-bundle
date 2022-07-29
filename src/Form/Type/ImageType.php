@@ -38,16 +38,16 @@ class ImageType extends AbstractType
 
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
-        $view->vars = array_replace($view->vars, ['row_attr' => Arr::attachClassToAttr($view->vars['row_attr'], 'cp--form--single_image')]);
+        $view->vars = array_replace($view->vars, ['row_attr' => Arr::attachClass($view->vars['row_attr'], 'cp--form--single_image')]);
 
         $view->vars = array_replace($view->vars, [
-            'row_attr' => Arr::attachToAttr($view->vars['row_attr'], ['data-controller' => 'braunstetter--media-bundle--image-upload'])
+            'row_attr' => Arr::attach($view->vars['row_attr'], ['data-controller' => 'braunstetter--media-bundle--image-upload'])
         ]);
 
         $view->vars['placeholder_image_path'] = $options['placeholder_image_path'];
 
         $view->vars = array_replace($view->vars, [
-            'row_attr' => Arr::attachToAttr($view->vars['row_attr'], [
+            'row_attr' => Arr::attach($view->vars['row_attr'], [
                 'data-braunstetter--media-bundle--collection-target' => 'field',
             ]),
         ]);
