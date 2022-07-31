@@ -28,12 +28,12 @@ class ImageType extends AbstractType
         $resolver->define('placeholder_image_path')
             ->allowedTypes('string')
             ->default('bundles/media/images/image-placeholder.jpg')
-            ->info('The public path to the placeholder image to be shown for this image field.');
+            ->info('The public path to the placeholder image for this image field.');
 
         $resolver->define('file_options')
             ->allowedTypes('array')
             ->default([])
-            ->info('The array of options passed to the file field.');
+            ->info('The array of options for the file field.');
     }
 
     public function finishView(FormView $view, FormInterface $form, array $options)
