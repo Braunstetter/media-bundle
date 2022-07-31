@@ -152,7 +152,8 @@ folder: [tests/tests/Functional/Ui/screenshots](/tests/tests/Functional/Ui/scree
 
 > `choose_file` is the translation string of the file-input button.  
 > You can translate it by creating a translation file in the media namespace (e.g. media.fr.yaml)
-> You can see all available translations in [`vendor/braunstetter/media-bundle/src/Resources/translations`](/src/Resources/translations).
+> You can see all available translations
+> in [`vendor/braunstetter/media-bundle/src/Resources/translations`](/src/Resources/translations).
 
 ## Available FormTypes
 
@@ -160,7 +161,8 @@ If you need more FormTypes, consider opening an issue or contributing by submitt
 
 ### MediaCollectionType
 
-This is the most important type. It inherits from the native `Symfony\Component\Form\Extension\Core\Type\CollectionType` and can hold a collection of media FormType's.
+This is the most important type. It inherits from the native `Symfony\Component\Form\Extension\Core\Type\CollectionType`
+and can hold a collection of media FormType's.
 
 #### Options
 
@@ -185,6 +187,19 @@ This FormType is dedicated to Images.
 
 #### Options
 
+All options for this FormType go into the `entry_options` options of `MediaCollectionType`:
+
+```php
+$form->add('image', MediaCollectionType::class, [
+    'entry_type' => ImageType::class,
+    'entry_options' => [
+        'required' => false,
+        'label' => false,
+        // ... more options for ImageType
+    ],
+])
+```
+
 ##### data_class
 
 If you decide to name your Image entity differently or put it into another namespace, you have to adjust also
@@ -199,6 +214,7 @@ It's by default `bundles/media/images/image-placeholder.jpg`.
 ##### file_options
 
 The array of options for the file field.
+A list of available options can be found // available options can be found [here](https://symfony.com/doc/current/reference/forms/types/file.html).  
 Defaults to an empty array.
 
 # Uploader
