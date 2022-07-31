@@ -152,7 +152,7 @@ folder: [tests/tests/Functional/Ui/screenshots](/tests/tests/Functional/Ui/scree
 
 > `choose_file` is the translation string of the file-input button.  
 > You can translate it by creating a translation file in the media namespace (e.g. media.fr.yaml)
-> You can see all available translations in `vendor/braunstetter/media-bundle/src/Resources/translations`).
+> You can see all available translations in [`vendor/braunstetter/media-bundle/src/Resources/translations`](/src/Resources/translations).
 
 ## Available FormTypes
 
