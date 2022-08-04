@@ -46,7 +46,7 @@ class Image extends BaseFile
 And migrate your database:
 
 ```shell
-symfony console make:migration && symfony console doctrine:migrations:migrate'
+symfony console make:migration && symfony console doctrine:migrations:migrate
 ```
 
 It doesn't look like much - but at this point, you're using an interface (`FileInterface`) your uploaders and forms can
