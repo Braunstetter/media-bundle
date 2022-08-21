@@ -253,6 +253,11 @@ properly on your machine.
 Then your tests should work fine performing a simple:
 
 ```shell
+yarn --cwd ./src/Resources/assets install --force
+yarn --cwd ./tests/app install --force
+yarn --cwd ./src/Resources/assets  dev
+yarn --cwd ./tests/app dev
+
 ./vendor/phpunit/phpunit/phpunit
 ```
 
