@@ -9,9 +9,9 @@ src/Resources/public/build/manifest.json
 src/Resources/public/build/entrypoints.json
 src/Resources/assets/node_modules
 tests/app/node_modules
-tests/app/public/build
-tests/app/yarn.lock
-tests/app/public/tests
+#tests/app/public/build
+#tests/app/public/tests
+#tests/app/yarn.lock
 
 
 
