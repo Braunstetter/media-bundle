@@ -896,6 +896,11 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
+"@braunstetter/rock@^1":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@braunstetter/rock/-/rock-1.0.0.tgz#5c42704c46320bbaf2cefc3975d196c0af3e48ec"
+  integrity sha512-CV6mf60bMG6SIQYqw26WFPHRUjHVAt3hO0Wm1cmLmNfX01aGFRs56BG6MJWiHqcWRlPp27kGkQgisgEKwXbrAw==
+
 "@discoveryjs/json-ext@^0.5.0":
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"

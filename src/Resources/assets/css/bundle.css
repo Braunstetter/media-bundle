@@ -1,25 +1,25 @@
 @import "preflight.css";
-@import "mixins/button.css";
-@import "mixins/font.css";
-@import "mixins/image.css";
+@import "@braunstetter/rock/css/variables.css";
 
 .cp--form--single_image {
 
     .image-preview {
 
-        margin-bottom: 0.25rem;
-        height: 14rem;
+        margin-bottom: $_1;
+        max-height: $_56;
         display: flex;
         align-items: flex-end;
 
         > svg {
             flex-shrink: 0;
-            height: 14rem;
-            width: 14rem;
+            height: $_56;
+            width: $_56;
         }
 
         > img {
-            max-height: 14rem;
+            max-height: $_56;
+            max-width: 100%;
+            height: auto
         }
     }
 
@@ -41,60 +41,66 @@
 
     > div.image-collection {
         display: flex;
+        flex-wrap: wrap;
         justify-content: flex-start;
         align-items: center;
 
-        > * + * {
-            margin-left: 0.5rem
+        margin-left: -.5rem;
+
+        > * {
+            margin-left: .5rem;
         }
+
+        @mixin space y, 2;
     }
 
     > div.image-collection-actions {
-        padding: 0.5rem 1rem;
+
         display: flex;
         align-items: center;
 
         > button {
+
+            cursor: pointer;
+            border: none;
             display: flex;
             align-items: center;
+
+            &:hover {
+                background-color: transparent;
+            }
+
+            @mixin contains-svg md;
+            @mixin btn md;
 
             &.hidden {
                 display: none;
             }
         }
 
-        svg {
-            @mixin svg-md;
-        }
+        @mixin contains-svg md;
     }
 
     .delete-able-image {
 
         display: flex;
         align-items: center;
-        color: #334155;
+
+        @mixin space x, 3;
 
         > * + * {
-            margin-left: 0.75rem;
             display: flex;
             align-items: center;
         }
 
-        > a > svg {
-            @mixin svg-md;
+        > a {
+            @mixin contains-svg md;
         }
 
         > label {
-
-            > * + * {
-                margin-left: 0.25rem;
-            }
-
-            @mixin btn;
-
-            > svg {
-                @mixin svg-md;
-            }
+            @mixin space x, 1;
+            @mixin contains-svg md;
+            @mixin btn md, primary;
         }
     }
 

@@ -60,7 +60,7 @@ class FormTest extends AbstractMediaBundleTestCase
     public function test_max_items_option_hides_add_button()
     {
         $client = $this->initPantherClient();
-
+        $client->followRedirect();
         $client->request('GET', '/test-two-existing-images?options=' . json_encode(['max_items' => 3]));
 
         $client->getCrawler()->filter('div.image-collection-actions > button')->click();
