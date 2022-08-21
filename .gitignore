@@ -11,6 +11,7 @@ src/Resources/assets/node_modules
 tests/app/node_modules
 tests/app/public/build
 tests/app/yarn.lock
+tests/app/public/tests
 
 
 
