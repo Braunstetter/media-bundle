@@ -8,6 +8,7 @@ composer.lock
 src/Resources/public/build/manifest.json
 src/Resources/public/build/entrypoints.json
 src/Resources/assets/node_modules
+tests/tests/Functional/Ui/screenshots
 tests/app/node_modules
 tests/app/public/build
 tests/app/public/tests

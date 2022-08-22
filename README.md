@@ -145,7 +145,7 @@ This will give you a nice UI. This is a screenshot of a simple blanc form:
 ![blank UI](tests/tests/Functional/Ui/screenshots/empty_form.png)
 
 All screenshots (made automatically by [panther](https://github.com/symfony/panther)) are available inside the
-folder: [tests/tests/Functional/Ui/screenshots](/tests/tests/Functional/Ui/screenshots)
+folder: `tests/tests/Functional/Ui/screenshots` after you [ran the testsuite](#testing).
 
 > `choose_file` is the translation string of the file-input button.  
 > You can translate it by creating a translation file in the media namespace (e.g. media.fr.yaml)
@@ -253,6 +253,8 @@ properly on your machine.
 Then your tests should work fine performing a simple:
 
 ```shell
+composer install
+vendor/bin/bdi detect drivers
 yarn --cwd ./src/Resources/assets install --force
 yarn --cwd ./tests/app install --force
 yarn --cwd ./src/Resources/assets  dev
