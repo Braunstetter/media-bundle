@@ -142,7 +142,7 @@ $form->add('image', MediaCollectionType::class, [
 
 This will give you a nice UI. This is a screenshot of a simple blanc form:
 
-![blank UI](tests/tests/Functional/Ui/screenshots/empty_form.png)
+![blank UI](images/empty_form.png)
 
 All screenshots (made automatically by [panther](https://github.com/symfony/panther)) are available inside the
 folder: `tests/tests/Functional/Ui/screenshots` after you [ran the testsuite](#testing).
