@@ -1,6 +1,6 @@
 # MediaBundle
 
-[![Total Downloads](http://poser.pugx.org/braunstetter/media-bundle/downloads)](https://packagist.org/packages/braunstetter/media-bundle)
+[//]: # ([![Total Downloads]&#40;http://poser.pugx.org/braunstetter/media-bundle/downloads&#41;]&#40;https://packagist.org/packages/braunstetter/media-bundle&#41;)
 [![License](http://poser.pugx.org/braunstetter/media-bundle/license)](https://packagist.org/packages/braunstetter/media-bundle)
 
 This Bundle aims to make working with media entities easy.
@@ -267,7 +267,7 @@ yarn --cwd ./tests/app dev
 
 There are still some features that are definitely to come.
 
-1. [ ] S3 Uploader
+1. [ ] Remove uploader (FlysystemBundle is the way to go.)
 2. [ ] Draggable UI (make media objects draggable)
 3. [ ] More FormTypes. (Document, PDF, Audio ...)
 
