@@ -6,7 +6,7 @@
   "license": "MIT",
   "require": {
     "php": "^8.0",
-    "symfony/framework-bundle": "^4.4|^5.0|^6.0",
+    "symfony/framework-bundle": "^6.0",
     "symfony/string": "^6.0",
     "webmozart/assert": "^1.1",
     "braunstetter/helper" : "^0",

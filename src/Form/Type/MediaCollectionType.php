@@ -14,19 +14,21 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class MediaCollectionType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $data = $event->getData();
             $form = $event->getForm();
 
-            if ($data->isEmpty()) {
+            /** @var bool $fillIfEmpty */
+            $fillIfEmpty = $form->getConfig()->getOption('fill_if_empty');
+            if ($fillIfEmpty && $data->isEmpty()) {
                 $form->add(0, $form->getConfig()->getOption('entry_type'), $form->getConfig()->getOption('entry_options'));
             }
         });
     }
 
-    public function finishView(FormView $view, FormInterface $form, array $options)
+    public function finishView(FormView $view, FormInterface $form, array $options): void
     {
         $view->vars = array_replace($view->vars, [
             'row_attr' => Arr::attach($view->vars['row_attr'], [
@@ -39,7 +41,7 @@ class MediaCollectionType extends AbstractType
         ]);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefault('by_reference', false);
         $resolver->setDefault('allow_delete', true);
@@ -53,6 +55,11 @@ class MediaCollectionType extends AbstractType
             ->default(true)
             ->allowedTypes('bool')
             ->info('Determines whether the supplied css should be injected.');
+
+        $resolver->define('fill_if_empty')
+            ->default(true)
+            ->allowedTypes('bool')
+            ->info('Determines whether the collection should be filled with one empty entry if the collection is empty.');
     }
 
     public function getParent(): string
