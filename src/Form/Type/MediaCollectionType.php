@@ -33,7 +33,8 @@ class MediaCollectionType extends AbstractType
         $view->vars = array_replace($view->vars, [
             'row_attr' => Arr::attach($view->vars['row_attr'], [
                 'data-controller' => 'braunstetter--media-bundle--collection',
-                'data-braunstetter--media-bundle--collection-max-items-value' => $options['max_items']
+                'data-braunstetter--media-bundle--collection-max-items-value' => $options['max_items'],
+                'data-braunstetter--media-bundle--collection-focus-on-add-value' => $options['focus_on_add'],
             ]),
             'attr' => Arr::attachClass($view->vars['attr'], 'image-collection'),
             'max_items' => $options['max_items'],
@@ -60,6 +61,11 @@ class MediaCollectionType extends AbstractType
             ->default(true)
             ->allowedTypes('bool')
             ->info('Determines whether the collection should be filled with one empty entry if the collection is empty.');
+
+        $resolver->define('focus_on_add')
+            ->default(true)
+            ->allowedTypes('bool')
+            ->info('Determines whether the focus should be set on the newly added element.');
     }
 
     public function getParent(): string

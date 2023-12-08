@@ -10,6 +10,7 @@ export default class extends Controller {
         prototype: String,
         maxItems: Number,
         itemsCount: Number,
+        focusOnAdd: Boolean,
     }
 
     connect() {
@@ -24,6 +25,15 @@ export default class extends Controller {
         this.containerElement.insertAdjacentHTML('beforeend', newField)
         this.index++
         this.itemsCountValue++
+
+        if (this.focusOnAddValue) {
+            const newField = this.containerElement.lastElementChild;
+            const fileInput = newField.querySelector('input[type="file"]');
+            if (fileInput) {
+                fileInput.click();
+            }
+        }
+
     }
 
     removeItem(event) {
