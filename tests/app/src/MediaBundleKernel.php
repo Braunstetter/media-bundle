@@ -20,7 +20,6 @@ class MediaBundleKernel extends Kernel
     private function configureContainer(ContainerConfigurator $container): void
     {
         $container->import(__DIR__ . '/../config/config.php');
-        $container->import(__DIR__ . '/../config/packages/liip_imagine.yaml');
 
         $container->extension('twig', [
             'paths' => [

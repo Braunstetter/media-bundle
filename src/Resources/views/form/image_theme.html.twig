@@ -48,9 +48,9 @@
 {% block image_preview %}
     <div class="image-preview">
         {% if form.vars.value.fullPath|default(null) is not null %}
-            <img src="{{ form.vars.value.fullPath|imagine_filter('form_preview') }}"
+            <img src="{{ form.vars.value.fullPath }}"
                  alt="{{ form.vars.value.altText ?? form.vars.value.fileName }}"/>
-        {% else %}
+        {% elseif placeholder_image_path != false %}
             <img src="{{ asset(placeholder_image_path) }}" alt="avatar"/>
         {% endif %}
     </div>

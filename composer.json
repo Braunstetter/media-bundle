@@ -21,7 +21,6 @@
     "nyholm/symfony-bundle-test": "1.8.1",
     "doctrine/doctrine-bundle": "^2.5",
     "symplify/amnesia": "^10.2",
-    "liip/imagine-bundle": "^2.7",
     "symfony/twig-bundle": "^4.4|^5.0|^6.0",
     "symfony/panther": "^2.0",
     "dbrekelmans/bdi": "^1.0",

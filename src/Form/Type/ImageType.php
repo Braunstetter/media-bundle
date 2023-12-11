@@ -14,7 +14,7 @@ class ImageType extends AbstractType
 {
     const IMAGE_ENTITY_NAME = 'App\Entity\Media\Image';
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('file', FileType::class, $options['file_options']);
     }
@@ -26,9 +26,13 @@ class ImageType extends AbstractType
         }
 
         $resolver->define('placeholder_image_path')
-            ->allowedTypes('string')
+            ->allowedTypes('string', 'bool')
+            ->allowedValues(static function ($value) {
+                return $value === false || is_string($value);
+            })
             ->default('bundles/media/images/image-placeholder.jpg')
-            ->info('The public path to the placeholder image for this image field.');
+            ->info('The public path to the placeholder image for this image field. It will be used if no image is uploaded. If you want to disable the placeholder image, set this option to false.');
+
 
         $resolver->define('file_options')
             ->allowedTypes('array')
@@ -36,7 +40,7 @@ class ImageType extends AbstractType
             ->info('The array of options for the file field.');
     }
 
-    public function finishView(FormView $view, FormInterface $form, array $options)
+    public function finishView(FormView $view, FormInterface $form, array $options): void
     {
         $view->vars = array_replace($view->vars, ['row_attr' => Arr::attachClass($view->vars['row_attr'], 'cp--form--single_image')]);
 

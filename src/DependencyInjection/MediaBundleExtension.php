@@ -15,7 +15,7 @@ class MediaBundleExtension extends Extension implements PrependExtensionInterfac
      * @inheritDoc
      * @throws \Exception
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $phpFileLoader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
         $phpFileLoader->load('services.php');
@@ -24,16 +24,12 @@ class MediaBundleExtension extends Extension implements PrependExtensionInterfac
     /**
      * @throws \Exception
      */
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         $phpFileLoader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
 
         if ($container->hasExtension('twig')) {
             $phpFileLoader->load('form_theme.php');
-        }
-
-        if ($container->hasExtension('liip_imagine')) {
-            $phpFileLoader->load('filter_sets.php');
         }
     }
 }

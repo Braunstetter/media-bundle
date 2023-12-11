@@ -4,9 +4,8 @@ export default class extends Controller {
     static targets = []
 
     connect() {
-        this.element.querySelector('input[type=file]').addEventListener('change', (input) => {
-            this.displayUploadedImage(input);
-        })
+        this.element.querySelector('input[type=file]')
+            .addEventListener('change', input => this.displayUploadedImage(input))
     }
 
     displayUploadedImage(input) {
