@@ -16,7 +16,7 @@
             <button
                     data-braunstetter--media-bundle--collection-target="addButton"
                     data-action="braunstetter--media-bundle--collection#addItem"
-                    {% if value is not null and max_items <= value.count %}class="hidden"{% endif %}
+                    {% if value is not null and max_items <= value|length %}class="hidden"{% endif %}
             >
                 {{ source('@Media/images/svg/icon-plus.svg') }}
             </button>
