@@ -11,7 +11,7 @@
     "webmozart/assert": "^1.1",
     "braunstetter/helper": "^0",
     "symfony/mime": "^6.0|^7.0",
-    "doctrine/orm": "^2.11",
+    "doctrine/orm": "^2.11|^3.0",
     "symfony/form": "^6.0|^7.0",
     "symfony/asset": "^6.0|^7.0"
   },
