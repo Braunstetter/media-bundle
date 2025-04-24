@@ -20,20 +20,27 @@ export default class extends Controller {
 
     addItem(event) {
         event.preventDefault()
+        this.doAddItem();
+
+        if (this.focusOnAddValue) {
+            this.focusInput();
+        }
+    }
+
+    focusInput() {
+        const newField = this.containerElement.lastElementChild;
+        const fileInput = newField.querySelector('input[type="file"]');
+        if (fileInput) {
+            fileInput.click();
+        }
+    }
+
+    doAddItem() {
         const prototype = this.containerElement.dataset.prototype
         const newField = prototype.replace(/__name__/g, this.index)
         this.containerElement.insertAdjacentHTML('beforeend', newField)
         this.index++
         this.itemsCountValue++
-
-        if (this.focusOnAddValue) {
-            const newField = this.containerElement.lastElementChild;
-            const fileInput = newField.querySelector('input[type="file"]');
-            if (fileInput) {
-                fileInput.click();
-            }
-        }
-
     }
 
     removeItem(event) {
@@ -46,11 +53,16 @@ export default class extends Controller {
         })
     }
 
-    itemsCountValueChanged() {
+    removeItemAndReaddEmpty(event) {
+        this.removeItem(event)
+        this.doAddItem()
+    }
 
+    itemsCountValueChanged() {
         if (false === this.hasAddButtonTarget || 0 === this.maxItemsValue) {
             return
         }
+
         const maxItemsReached = this.itemsCountValue >= this.maxItemsValue
         this.addButtonTarget.classList.toggle('hidden', maxItemsReached)
     }
