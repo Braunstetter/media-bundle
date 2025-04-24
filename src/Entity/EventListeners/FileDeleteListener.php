@@ -4,6 +4,7 @@ namespace Braunstetter\MediaBundle\Entity\EventListeners;
 
 use Braunstetter\MediaBundle\Entity\BaseFile as File;
 use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\Event\PostRemoveEventArgs;
 use Exception;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Filesystem\Filesystem;
@@ -22,7 +23,7 @@ class FileDeleteListener
     /**
      * @throws Exception
      */
-    public function postRemove(LifecycleEventArgs $args): void
+    public function postRemove(PostRemoveEventArgs $args): void
     {
         /** @var File $object */
         $object = $args->getObject();
