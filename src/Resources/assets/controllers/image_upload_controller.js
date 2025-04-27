@@ -25,4 +25,14 @@ export default class extends Controller {
             reader.readAsDataURL(input.target.files[0]);
         }
     };
+
+    openFileSelection() {
+        const fileInput = this.element.querySelector('input[type=file]');
+        if (fileInput === null) {
+            return;
+        }
+
+        fileInput.click();
+    }
+
 }
