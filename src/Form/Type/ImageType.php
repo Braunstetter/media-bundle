@@ -9,14 +9,28 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use App\Entity\Media\Image;
 
 class ImageType extends AbstractType
 {
-    const IMAGE_ENTITY_NAME = 'App\Entity\Media\Image';
+    public const IMAGE_ENTITY_NAME = Image::class;
+    public const ALLOWED_MIME_TYPES = [
+        'image/jpeg',
+        'image/png',
+        'image/gif',
+        'image/webp',
+    ];
+
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('file', FileType::class, $options['file_options']);
+        $fileOptions = array_merge_recursive([
+            'attr' => [
+                'accept' => implode(', ', self::ALLOWED_MIME_TYPES),
+            ],
+        ], $options['file_options']);
+
+        $builder->add('file', FileType::class, $fileOptions);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
