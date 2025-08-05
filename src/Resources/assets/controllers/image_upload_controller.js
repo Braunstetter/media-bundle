@@ -13,13 +13,26 @@ export default class extends Controller {
             const reader = new FileReader();
 
             reader.onload = (event) => {
+                const imageContainer = this.element.querySelector('.image-preview');
+                let image = imageContainer.querySelector('img');
 
-                const image = this.element.querySelector('.image-preview > img');
-
-                if (image instanceof Image) {
-                    image.setAttribute('src', event.target.result.toString());
+                // If no img element exists, create one dynamically
+                if (!image) {
+                    image = document.createElement('img');
+                    image.alt = 'uploaded image';
+                    imageContainer.appendChild(image);
                 }
 
+                image.setAttribute('src', event.target.result.toString());
+
+                // Ensure the image is visible (in case it was hidden)
+                image.style.display = '';
+
+                // Dispatch custom event to notify other controllers about the new image
+                this.element.dispatchEvent(new CustomEvent('image:uploaded', {
+                    bubbles: true,
+                    detail: { image: image }
+                }));
             };
 
             reader.readAsDataURL(input.target.files[0]);
